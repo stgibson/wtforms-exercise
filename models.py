@@ -12,7 +12,7 @@ class Pet(db.Model):
         its species, a photo id, its age, any additional notes on the pet, and
         whether or not it is available.
     """
-    __tablename__ = pets
+    __tablename__ = "pets"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 
