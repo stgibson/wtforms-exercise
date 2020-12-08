@@ -15,7 +15,7 @@ ages = (12, 22, None)
 notes = ("This is my dog", "beware of spikes", None)
 
 pets = [Pet(name=pet[0], species=pet[1], photo_url=pet[2], age=pet[3], \
-    notes=pet[4]), for pet in zip(names, species, photo_urls, ages, notes)]
+    notes=pet[4]) for pet in zip(names, species, photo_urls, ages, notes)]
 
 db.session.add_all(pets)
 db.session.commit()
