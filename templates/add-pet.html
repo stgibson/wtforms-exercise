@@ -3,5 +3,13 @@
 {% block title %}Add Pet{% endblock %}
 
 {% block content %}
-  <h1 class="mb-4">Add New Pet</h1>
+  <h1 class="my-4">Add New Pet</h1>
+  <form>
+    {% for field in form if field.widget.input_type != 'hidden' %}
+      <div class="mb-3">
+        {{ field.label }}
+        {{ field(class_="form-control") }}
+      </div>
+    {% endfor %}
+  </form>
 {% endblock %}
