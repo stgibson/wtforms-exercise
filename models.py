@@ -14,13 +14,15 @@ class Pet(db.Model):
     """
     __tablename__ = "pets"
 
+    placeholder_image = "/static/placeholder.png"
+
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 
     name = db.Column(db.Text, nullable=False)
 
     species = db.Column(db.Text, nullable=False)
 
-    photo_url = db.Column(db.Text)
+    photo_url = db.Column(db.Text, default=placeholder_image)
 
     age = db.Column(db.Integer)
 
