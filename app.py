@@ -28,7 +28,7 @@ def show_home_page():
 @app.route("/add", methods=["GET", "POST"])
 def add_pet():
     """
-        Shows a form for the user to add a new pet
+        Shows a form for the user to add a new pet, and handles adding a pet
         rtype: str
     """
     form = PetForm()
@@ -58,3 +58,22 @@ def add_pet():
         return redirect("/")
 
     return render_template("add-pet.html", form=form)
+
+@app.route("/<int:pet_id>", methods=["GET", "POST"])
+def show_and_edit_pet(pet_id):
+    """
+        Shows the details of the pet with id pet_id and a form to edit the pet,
+        and handles editing a pet
+        type pet_id: int
+        rtype: str
+    """
+    # get info on the pet
+    pet = Pet.query.get(pet_id)
+
+    # create form with info
+    form = PetForm(obj=pet)
+
+    if form.validate_on_submit():
+        pass
+
+    return render_template("display-pet.html", pet=pet, form=form)

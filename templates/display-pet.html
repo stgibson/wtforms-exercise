@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Display Pet{% endblock %}
+
+{% block content %}
+  <h1 class="my-4">{{pet.name}}</h1>
+  <div class="row">
+    <div class="card col-6 p-1">
+      <img
+        class="img-fluid"
+        src="{{pet.photo_url}}"
+        alt="image of {{pet.name}}"
+      >
+    </div>
+    <div class="col mt-1">
+      <p>
+        Species: {{pet.species}}
+      </p>
+      {% if pet.age %}
+        <p>
+          Age: {{pet.age}}
+        </p>
+      {% endif %}
+    </div>
+  </div>
+  <form id="edit-pet-form" class="mt-4" method="POST">
+    <div class="mb-3">
+      {{ form.photo_url.label }}
+      {{ form.photo_url(class_="form-control") }}
+      {% for error in form.photo_url.errors %}
+        <small class="text-danger">{{ error }}</small>
+      {% endfor %}
+    </div>
+    <button class="btn btn-success" type="submit">Edit Pet</button>
+  </form>
+{% endblock %}
