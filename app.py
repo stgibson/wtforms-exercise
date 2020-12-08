@@ -26,7 +26,7 @@ def show_home_page():
     return render_template("home.html", pets=pets)
 
 @app.route("/add", methods=["GET", "POST"])
-def show_add_pet_form():
+def add_pet():
     """
         Shows a form for the user to add a new pet
         rtype: str

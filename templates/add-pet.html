@@ -4,7 +4,7 @@
 
 {% block content %}
   <h1 class="my-4">Add New Pet</h1>
-  <form id="pet-form" method="POST">
+  <form id="add-pet-form" method="POST">
     {{ form.hidden_tag() }}
 
     {% for field in form if field.widget.input_type != 'hidden' %}
@@ -17,6 +17,6 @@
         {% endfor %}
       </div>
     {% endfor %}
-    <button class="btn btn-success">Add Pet</button>
+    <button class="btn btn-success" type="submit">Add Pet</button>
   </form>
 {% endblock %}
