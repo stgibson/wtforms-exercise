@@ -5,15 +5,15 @@
 {% block content %}
   <h1 class="my-4">Add New Pet</h1>
   <form id="add-pet-form" method="POST">
-    {{ form.hidden_tag() }}
+    {{form.hidden_tag()}}
 
-    {% for field in form if field.widget.input_type != 'hidden' %}
+    {% for field in form if field.widget.input_type != "hidden" %}
       <div class="mb-3">
-        {{ field.label }}
-        {{ field(class_="form-control") }}
+        {{field.label}}
+        {{field(class_="form-control")}}
 
         {% for error in field.errors %}
-          <small class="text-danger">{{ error }}</small>
+          <small class="text-danger">{{error}}</small>
         {% endfor %}
       </div>
     {% endfor %}
