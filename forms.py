@@ -1,12 +1,12 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SelectField, BooleanField
-from wtforms.validators import URL, Optional, NumberRange
+from wtforms.validators import InputRequired, URL, Optional, NumberRange
 
 class AddPetForm(FlaskForm):
     """
         Defines a form to add a pet
     """    
-    name = StringField("Name")
+    name = StringField("Name", validators=[InputRequired()])
     
     species = SelectField("Species", \
         choices=[("cat", "cat"), ("dog", "dog"), ("porcupine", "porcupine")])
