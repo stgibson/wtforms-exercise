@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, Pet
-from forms import PetForm
+from forms import AddPetForm, EditPetForm
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "kubrick"
@@ -31,7 +31,7 @@ def add_pet():
         Shows a form for the user to add a new pet, and handles adding a pet
         rtype: str
     """
-    form = PetForm()
+    form = AddPetForm()
 
     if form.validate_on_submit():
         # retrieve form data
@@ -71,7 +71,7 @@ def show_and_edit_pet(pet_id):
     pet = Pet.query.get(pet_id)
 
     # create form with info
-    form = PetForm(obj=pet)
+    form = EditPetForm(obj=pet)
 
     if form.validate_on_submit():
         pass

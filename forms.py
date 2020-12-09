@@ -1,10 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SelectField
+from wtforms import StringField, IntegerField, SelectField, BooleanField
 from wtforms.validators import URL, Optional, NumberRange
 
-class PetForm(FlaskForm):
+class AddPetForm(FlaskForm):
     """
-        Defines a form to create or add a pet
+        Defines a form to add a pet
     """    
     name = StringField("Name")
     
@@ -16,3 +16,13 @@ class PetForm(FlaskForm):
     age = IntegerField("Age", validators=[NumberRange(0, 30), Optional()])
 
     notes = StringField("Notes")
+
+class EditPetForm(FlaskForm):
+    """
+        Defines a form to edit a pet
+    """
+    photo_url = StringField("Photo", validators=[URL(), Optional()])
+
+    notes = StringField("Notes")
+
+    available = BooleanField("Available")
