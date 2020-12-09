@@ -69,11 +69,33 @@ def show_and_edit_pet(pet_id):
     """
     # get info on the pet
     pet = Pet.query.get(pet_id)
+    
+    # if photo is placeholder, remove for display on form
+    if pet.photo_url == Pet.placeholder_image:
+        pet.photo_url = None
 
     # create form with info
     form = EditPetForm(obj=pet)
 
     if form.validate_on_submit():
-        pass
+        # get form data
+        photo_url = form.photo_url.data
+        notes = form.notes.data
+        available = form.available.data
+
+        # if optional fields are blank, set to None
+        if not photo_url:
+            photo_url = Pet.placeholder_image
+        if not notes:
+            notes = None
+
+        # update pet
+        pet.photo_url = photo_url
+        pet.notes = notes
+        pet.available = available
+        db.session.add(pet)
+        db.session.commit()
+
+        return redirect("/")
 
     return render_template("display-pet.html", pet=pet, form=form)
