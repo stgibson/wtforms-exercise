@@ -100,4 +100,5 @@ def show_and_edit_pet(pet_id):
         flash("You have edited the pet")
         return redirect("/")
 
-    return render_template("display-pet.html", pet=pet, form=form)
+    return render_template("display-pet.html", pet=pet, form=form, \
+        placeholder_image=Pet.placeholder_image)
